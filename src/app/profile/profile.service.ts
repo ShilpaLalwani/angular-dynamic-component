@@ -18,8 +18,8 @@ export class ProfileService {
 
   private clientProfile() {
     return () =>
-      import('./client-profile/client-profile.component').then(
-        m => m.ClientProfileComponent
+      import('./user-card/user-card.component').then(
+        m => m.UserCardComponent
       );
   }
 

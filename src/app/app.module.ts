@@ -5,16 +5,16 @@ import { AppComponent } from './app.component';
 import { ProfileHostDirective } from './profile/profile-host.directive';
 import { ProfileComponent } from './profile/profile.component';
 import { GuestProfileComponent } from './profile/guest-profile/guest-profile.component';
-import { ClientProfileComponent } from './profile/client-profile/client-profile.component';
+import { UserCardComponent } from './profile/user-card/user-card.component';
 
 @NgModule({
-  declarations: [AppComponent, ProfileHostDirective, ProfileComponent, GuestProfileComponent, ClientProfileComponent],
+  declarations: [AppComponent, ProfileHostDirective, ProfileComponent, GuestProfileComponent, UserCardComponent],
   imports: [BrowserModule],
   providers: [],
   bootstrap: [AppComponent],
   entryComponents: [
     GuestProfileComponent,
-    ClientProfileComponent
+    UserCardComponent
   ]
 })
 export class AppModule {}
