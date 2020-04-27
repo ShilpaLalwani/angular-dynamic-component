@@ -11,8 +11,8 @@ export class ProfileService {
 
   private guestProfile() {
     return () =>
-      import('./guest-profile/guest-profile.component').then(
-        m => m.GuestProfileComponent
+      import('./guest-card/guest-card.component').then(
+        m => m.GuestCardComponent
       );
   }
 
