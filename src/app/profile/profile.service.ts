@@ -1,13 +1,12 @@
 import { Injectable,ComponentFactoryResolver, ViewContainerRef } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { AppService } from '../app.service';
 
 @Injectable({ providedIn: 'root' })
 export class ProfileService {
   private isLoggedIn = new BehaviorSubject(false);
   isLoggedIn$ = this.isLoggedIn.asObservable();
 
-  constructor(private appService: AppService,private cfr: ComponentFactoryResolver) {}
+  constructor(private cfr: ComponentFactoryResolver) {}
 
   login() {
     this.isLoggedIn.next(true);
