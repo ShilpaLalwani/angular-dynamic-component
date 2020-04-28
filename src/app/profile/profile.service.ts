@@ -2,6 +2,8 @@ import { Injectable, ViewContainerRef, ComponentFactoryResolver, Component } fro
 import { BehaviorSubject, from } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { AppService } from '../app.service';
+import {UserCardComponent} from './user-card/user-card.component';
+import {GuestCardComponent from './guest-card/guest-card.component'
 
 @Injectable({ providedIn: 'root' })
 export class ProfileService {
@@ -10,19 +12,7 @@ export class ProfileService {
 
   constructor(private appService: AppService) {}
 
-  private guestProfile() {
-    return () =>
-      import('./guest-card/guest-card.component').then(
-        m => m.GuestCardComponent
-      );
-  }
-
-  private clientProfile() {
-   
-      import('./user-card/user-card.component').then(({ UserCardComponent }) => {
-      return UserCardComponent
-      });
-  }
+ 
 
   login() {
     this.isLoggedIn.next(true);
@@ -33,8 +23,9 @@ export class ProfileService {
   }
 
   loadComponent(vcr: ViewContainerRef, cfr: ComponentFactoryResolver, isLoggedIn: boolean) {
-    let component :any = this.isLoggedIn ? this.clientProfile() : this.guestProfile();
-    let componentFactory = cfr.resolveComponentFactory(component)
+   
+    let component :any = this.isLoggedIn ? UserCardComponent : GuestCardComponent;
+    let componentFactory = cfr.resolveComponentFactory(component.component)
     vcr.clear();
     return vcr.createComponent(componentFactory)
   }
