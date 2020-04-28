@@ -11,7 +11,7 @@ export class ProfileService {
 
   private async guestProfile() {
    
-     const { GuestCardComponent } = await import('./guest-card/guest-card.componentt');
+     const { GuestCardComponent } = await import('./guest-card/guest-card.component');
     return GuestCardComponent
   }
 
