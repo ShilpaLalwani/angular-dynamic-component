@@ -3,7 +3,7 @@ import { BehaviorSubject, from } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { AppService } from '../app.service';
 import {UserCardComponent} from './user-card/user-card.component';
-import {GuestCardComponent from './guest-card/guest-card.component'
+import {GuestCardComponent } from './guest-card/guest-card.component'
 
 @Injectable({ providedIn: 'root' })
 export class ProfileService {
@@ -24,7 +24,7 @@ export class ProfileService {
 
   loadComponent(vcr: ViewContainerRef, cfr: ComponentFactoryResolver, isLoggedIn: boolean) {
    
-    let component :any = this.isLoggedIn ? UserCardComponent : GuestCardComponent;
+    let component :any = GuestCardComponent;
     let componentFactory = cfr.resolveComponentFactory(component.component)
     vcr.clear();
     return vcr.createComponent(componentFactory)
