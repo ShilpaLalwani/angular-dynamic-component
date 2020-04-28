@@ -33,7 +33,7 @@ export class ProfileService {
   }
 
   loadComponent(vcr: ViewContainerRef, cfr: ComponentFactoryResolver, isLoggedIn: boolean) {
-    let component = this.isLoggedIn ? this.clientProfile() : this.guestProfile();
+    let component :any = this.isLoggedIn ? this.clientProfile() : this.guestProfile();
     let componentFactory = cfr.resolveComponentFactory(component)
     vcr.clear();
     return vcr.createComponent(componentFactory)
