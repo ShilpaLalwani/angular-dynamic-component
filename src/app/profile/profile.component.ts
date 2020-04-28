@@ -12,7 +12,7 @@ import { ViewCompileResult } from '@angular/compiler/src/view_compiler/view_comp
   `
 })
 export class ProfileComponent implements OnInit, OnDestroy {
-  @ViewChild(ProfileHostDirective, { static: true, read: ViewContainerRef })
+  @ViewChild(ProfileHostDirective, { static: true})
   profileHost: ProfileHostDirective;
   private destroySubject = new Subject();
 
