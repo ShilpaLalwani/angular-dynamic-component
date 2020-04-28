@@ -1,8 +1,9 @@
-import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, ViewContainerRef } from '@angular/core';
 import { ProfileHostDirective } from './profile-host.directive';
 import { ProfileService } from './profile.service';
 import { mergeMap, takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
+import { ViewCompileResult } from '@angular/compiler/src/view_compiler/view_compiler';
 
 @Component({
   selector: 'app-profile-container',
@@ -11,7 +12,7 @@ import { Subject } from 'rxjs';
   `
 })
 export class ProfileComponent implements OnInit, OnDestroy {
-  @ViewChild(ProfileHostDirective, { static: true })
+  @ViewChild(ProfileHostDirective, { static: true, read: ViewContainerRef })
   profileHost: ProfileHostDirective;
   private destroySubject = new Subject();
 
