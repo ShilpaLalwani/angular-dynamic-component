@@ -9,18 +9,15 @@ export class ProfileService {
 
   constructor(private appService: AppService,private cfr: ComponentFactoryResolver) {}
 
-  private guestProfile() {
-    return () =>
-      import('./guest-card/guest-card.component').then(
-        m => m.GuestCardComponent
-      );
+  private async guestProfile() {
+   
+     const { GuestCardComponent } = await import('./guest-card/guest-card.componentt');
+    return GuestCardComponent
   }
 
-  private clientProfile() {
-    return () =>
-      import('./user-card/user-card.component').then(
-        m => m.UserCardComponent
-      );
+  private async  clientProfile() {
+     const { UserCardComponent } = await import('./user-card/user-card.component');
+    return UserCardComponent
   }
 
   login() {
@@ -33,10 +30,11 @@ export class ProfileService {
 
   async loadComponent(vcr: ViewContainerRef, isLoggedIn: boolean) {
     vcr.clear();
-    const { UserCardComponent } = await import('./user-card/user-card.component');
+   let component : any;
+   component = isLoggedIn ? this.clientProfile() : this.guestProfile()
     return vcr.createComponent(
-      this.cfr.resolveComponentFactory(UserCardComponent))
+      this.cfr.resolveComponentFactory(component))
 
-    
+   
     
 }}
